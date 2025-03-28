@@ -2,7 +2,7 @@
     "name": "backend",
     "version": "1.0.0",
     "scripts": {
-      "dev": "go run main.go"
+      "dev": "air"
     }
   }
   
