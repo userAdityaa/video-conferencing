@@ -46,7 +46,7 @@ export const AppStyles = {
 export const AppFont = {
     primary: {
         main: '"Black Han Sans", sans-serif',
-        bold: '"Black Han Sans", sans-serif', // Black Han Sans is already bold by default
+        bold: '"Black Han Sans", sans-serif',
         light: '"Pretendard Variable", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
     },
     secondary: {
@@ -56,7 +56,7 @@ export const AppFont = {
 
 export const AppFontSize = {
     primary: { 
-        header: '24px', 
+        header: '28px', 
         main: '26px',
         normal: '22px'
     }

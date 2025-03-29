@@ -1,4 +1,4 @@
-import { AppColors, AppFont, AppFontSize } from "../app/theme/AppConstant";
+import { AppColors, AppFont, AppFontSize } from "../theme/AppConstant";
 
 export default function Navbar() { 
     return (
@@ -13,7 +13,8 @@ export default function Navbar() {
                 <div className="text-xl font-bold tracking-wide opacity-90"
                     style={{
                         fontSize: AppFontSize.primary.header,
-                        color: AppColors.primary.contrastText 
+                        color: AppColors.primary.contrastText,
+                        letterSpacing: '1px'
                     }}
                 >
                     BlinkMeet
