@@ -6,7 +6,7 @@ export const AppColors = {
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#ff5733',
+      main: '#ffea00',
       light: '#ff8a65',
       dark: '#c41c00',
       contrastText: '#ffffff',
@@ -37,8 +37,27 @@ export const AppColors = {
     },
   };
   
-  export const AppStyles = {
+export const AppStyles = {
     borderRadius: '8px',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
     transition: 'all 0.3s ease',
-  };
+};
+
+export const AppFont = {
+    primary: {
+        main: '"Black Han Sans", sans-serif',
+        bold: '"Black Han Sans", sans-serif', // Black Han Sans is already bold by default
+        light: '"Pretendard Variable", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+    },
+    secondary: {
+        main: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', // Fallback fonts
+    },
+};
+
+export const AppFontSize = {
+    primary: { 
+        header: '24px', 
+        main: '26px',
+        normal: '22px'
+    }
+}

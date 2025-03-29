@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      sans: ['Black Han Sans', 'sans-serif'],
+    },
   },
   plugins: [],
 };
