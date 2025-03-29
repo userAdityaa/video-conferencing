@@ -5,9 +5,11 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx}", 
   ],
   theme: {
-    extend: {},
-    fontFamily: {
-      sans: ['Black Han Sans', 'sans-serif'],
+    extend: {
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'], // Default font for all sans-serif text
+        'black-hans': ['Black Han Sans', 'sans-serif'], // Class: font-black-hans
+      },
     },
   },
   plugins: [],
