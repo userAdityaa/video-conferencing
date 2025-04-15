@@ -11,9 +11,12 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
     "@repo/ui": "workspace:*",
+    "axios": "^1.8.4",
     "lottie-react": "^2.4.1",
     "next": "^15.2.1",
+    "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
