@@ -1,15 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"github.com/gin-gonic/gin"
+	"github.com/useradityaa/video-backend/routes"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World!")
-}
-
 func main() {
-	http.HandleFunc("/", handler)
-	http.ListenAndServe(":8000", nil)
+	r := gin.Default()
+
+	routes.SetUpRoutes(r)
+
+	r.Run(":8080")
 }
