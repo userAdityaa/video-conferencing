@@ -56,6 +56,7 @@ type Claims struct {
 }
 
 func GoogleAuthHandler(c *gin.Context) {
+	fmt.Println("Is it coming here ?")
 	var req GoogleAuthRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid Request"})
