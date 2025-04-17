@@ -23,7 +23,6 @@ export default function Home() {
     }, 500) 
   }
 
-  // Loading screen (shown after fade)
   if (transitionState === 'loading') {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-[#338aff] to-[#7aa3da]">

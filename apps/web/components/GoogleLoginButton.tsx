@@ -1,5 +1,5 @@
+'use client'
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -15,16 +15,24 @@ export default function GoogleLoginButton() {
 
     const handleSuccess = async (credentialResponse: GoogleCredentialResponse) => { 
         try { 
-            if(!credentialResponse) { 
+            if (!credentialResponse || !credentialResponse.credential) { 
                 throw new Error('No credential received');
             }
 
-            const response = await axios.post('/api/auth/google', { 
-                token: credentialResponse.credential
-            })
+            const response = await fetch('/api/auth/google', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token: credentialResponse.credential }),
+            });
 
-            localStorage.setItem('authToken', response.data.token);
+            if (!response.ok) {
+                throw new Error('Failed to authenticate');
+            }
 
+            const data = await response.json();
+            localStorage.setItem('authToken', data.token);
             router.push('/meet');
         } catch (error) { 
             setError('Authentication failed. Please try again.');
@@ -40,8 +48,8 @@ export default function GoogleLoginButton() {
         <div>
             <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ''}>
                 <GoogleLogin
-                onSuccess={handleSuccess}
-                onError={handleError}
+                    onSuccess={handleSuccess}
+                    onError={handleError}
                 />
             </GoogleOAuthProvider>
             {error && <div className="error-message">{error}</div>}
