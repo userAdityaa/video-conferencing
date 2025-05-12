@@ -2,6 +2,7 @@
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useStore } from "../store/store";
 
 interface GoogleCredentialResponse { 
     credential?: string;
@@ -12,6 +13,7 @@ interface GoogleCredentialResponse {
 export default function GoogleLoginButton() { 
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
+    const setLoading = useStore((state) => state.setLoading);
 
     const handleSuccess = async (credentialResponse: GoogleCredentialResponse) => { 
         try { 
@@ -33,7 +35,15 @@ export default function GoogleLoginButton() {
 
             const data = await response.json();
             localStorage.setItem('authToken', data.token);
+
+
+            setTimeout(() => {
+                setLoading(true);
+            }, 2000);
+
+            setLoading(false); 
             router.push('/meet');
+            
         } catch (error) { 
             setError('Authentication failed. Please try again.');
             console.error('Authentication error:', error);
