@@ -2,7 +2,6 @@
 
 import { useStore } from "../store/store";
 import { AppColors, AppFont, AppFontSize } from "../theme/AppConstant";
-import LoadingInstantAnimation from "../utils/LoadingInstantMeetAnimation";
 import GoogleLoginButton from "./GoogleLoginButton";
 import { useRouter } from "next/navigation";
 
@@ -10,16 +9,7 @@ export default function Navbar() {
     const loading = useStore((state) => state.loading);
     const setLoading = useStore((state) => state.setLoading);
     const router = useRouter();
-
-    if (loading) {
-        return (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-[#338aff] to-[#7aa3da]">
-                <LoadingInstantAnimation />
-            </div>
-        );
-    }
     
-
     return (
         <header>
             <nav 

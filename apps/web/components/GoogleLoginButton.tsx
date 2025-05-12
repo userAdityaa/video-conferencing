@@ -3,6 +3,7 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useStore } from "../store/store";
+import { HashUrlGenerator } from "../utils/HashUrlGenerator";
 
 interface GoogleCredentialResponse { 
     credential?: string;
@@ -42,7 +43,8 @@ export default function GoogleLoginButton() {
             }, 2000);
 
             setLoading(false); 
-            router.push('/meet');
+            const urlPath = await HashUrlGenerator();
+            router.push(`/meet/${urlPath.url}`);
             
         } catch (error) { 
             setError('Authentication failed. Please try again.');
