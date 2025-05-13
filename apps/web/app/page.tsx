@@ -4,8 +4,7 @@ import { AppColors, AppFont, AppFontSize } from "../theme/AppConstant"
 import Image from "next/image"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import LoadingAnimation from "../utils/LoadingAnimation"
-
+import LoadingAnimation from "utils/LoadingAnimation"
 
 export default function Home() { 
   const [transitionState, setTransitionState] = useState('idle')

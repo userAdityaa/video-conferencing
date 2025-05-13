@@ -15,6 +15,7 @@ export default function GoogleLoginButton() {
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
     const setLoading = useStore((state) => state.setLoading);
+    const setProfilePicture = useStore((state) => state.setProfilePicture);
 
     const handleSuccess = async (credentialResponse: GoogleCredentialResponse) => { 
         try { 
@@ -36,7 +37,7 @@ export default function GoogleLoginButton() {
 
             const data = await response.json();
             localStorage.setItem('authToken', data.token);
-
+            localStorage.setItem('profilePicture', data.user.picture);
 
             setTimeout(() => {
                 setLoading(true);
