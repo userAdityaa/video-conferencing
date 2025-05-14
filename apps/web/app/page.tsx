@@ -36,7 +36,7 @@ export default function Home() {
     }`}>
       <main className="flex items-center justify-center h-[50vh]">
         <div className="flex flex-col items-center">
-          {/* Text Section */}
+  
           <h1 className="w-[70%] text-center leading-tight text-white"  
           style={{
             fontFamily: AppFont.accent.main,
@@ -50,7 +50,6 @@ export default function Home() {
           }}> The fastest meetings on the web – blink, connect, and collaborate! ⚡📞
           </p>
           
-          {/* Button to Join */}
           <button 
             className="underline mt-[1rem]" 
             style={{
@@ -65,7 +64,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Image for display */}
         <Image 
           src='/Images/main.svg' 
           alt="mountain" 
