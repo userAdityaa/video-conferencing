@@ -37,14 +37,14 @@ export default function Home() {
       <main className="flex items-center justify-center h-[50vh]">
         <div className="flex flex-col items-center">
           {/* Text Section */}
-          <h1 className="w-[70%] text-center leading-tight"  
+          <h1 className="w-[70%] text-center leading-tight text-white"  
           style={{
             fontFamily: AppFont.accent.main,
             fontSize: AppFontSize.primary.main
           }}> BlinkMeet – Instant Calls, Infinite Connections!
           </h1>
 
-          <p className="font-normal" 
+          <p className="font-normal text-white" 
           style={{
             fontSize: AppFontSize.primary.normal, 
           }}> The fastest meetings on the web – blink, connect, and collaborate! ⚡📞

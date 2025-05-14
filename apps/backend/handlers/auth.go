@@ -73,6 +73,7 @@ func GoogleAuthHandler(c *gin.Context) {
 	email := payload["email"].(string)
 	name := payload["name"].(string)
 	googleID := payload["sub"].(string)
+	picture := payload["picture"].(string)
 
 	expirationTime := time.Now().Add(24 * time.Hour)
 	claims := &Claims{
@@ -92,9 +93,10 @@ func GoogleAuthHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"token": tokenString,
 		"user": gin.H{
-			"id":    googleID,
-			"name":  name,
-			"email": email,
+			"id":      googleID,
+			"name":    name,
+			"email":   email,
+			"picture": picture,
 		},
 	})
 }
