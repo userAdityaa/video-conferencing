@@ -12,12 +12,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { LogOut, Settings, User } from "lucide-react";
+import { useAuth } from "context/AuthContext";
 
 export default function Navbar() {
     const loading = useStore((state) => state.loading);
     const setLoading = useStore((state) => state.setLoading);    
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [picture, setPicture] = useState<string | null>("");
+    const {setAuthState} = useAuth(); 
 
     const router = useRouter();
 
@@ -31,7 +33,12 @@ export default function Navbar() {
         localStorage.removeItem('authToken'); 
         localStorage.removeItem('profilePicture');
         setPicture(""); 
-        router.refresh();
+        setAuthState ({
+            isAuthenticated: false, 
+            user: null, 
+            token: null
+        });
+        router.push('/');
     }
     
     return (

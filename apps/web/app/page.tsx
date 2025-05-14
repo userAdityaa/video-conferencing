@@ -5,21 +5,33 @@ import Image from "next/image"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import LoadingAnimation from "utils/LoadingAnimation"
+import { useAuth } from "context/AuthContext"
 
 export default function Home() { 
   const [transitionState, setTransitionState] = useState('idle')
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const router = useRouter()
+  const { authState } = useAuth(); 
 
   const handleJoinClick = () => { 
+    if(!authState.isAuthenticated) { 
+      setShowLoginPrompt(true); 
+      return;
+    }
+
     setTransitionState('fading')
     
     setTimeout(() => {
       setTransitionState('loading')
       
       setTimeout(() => {
-        router.push('/home')
+        router.push('/waiting')
       }, 2000) 
     }, 500) 
+  }
+
+  const closeLoginPrompt = () => {
+    setShowLoginPrompt(false); 
   }
 
   if (transitionState === 'loading') {
@@ -69,8 +81,25 @@ export default function Home() {
           alt="mountain" 
           height={1500} 
           width={1500} 
-          className="absolute -bottom-[19rem]"
+          className="absolute -bottom-[20rem]"
         />
+
+        {showLoginPrompt && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+            <h2 className="text-xl font-bold mb-4">Login Required</h2>
+            <p className="mb-6">You need to login first to Join a meet.</p>
+            <div className="flex justify-end space-x-4">
+              <button 
+                onClick={closeLoginPrompt}
+                className="px-4 py-2 hover:text-gray-300 bg-red-600 rounded-lg text-white"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </main>
     </div>
   )
