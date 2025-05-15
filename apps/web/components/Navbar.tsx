@@ -14,20 +14,16 @@ import {
 import { LogOut, Settings, User } from "lucide-react";
 import { useAuth } from "context/AuthContext";
 
-export default function Navbar() {
-    const loading = useStore((state) => state.loading);
-    const setLoading = useStore((state) => state.setLoading);    
-    const [isSignedIn, setIsSignedIn] = useState(false);
+export default function Navbar() {  
     const [picture, setPicture] = useState<string | null>("");
-    const {setAuthState} = useAuth(); 
-
     const router = useRouter();
+    const { setAuthState, authState } = useAuth(); 
 
-    useEffect(() => {
-        const token = localStorage.getItem('authToken');
-        setPicture(localStorage.getItem('profilePicture'));
-        setIsSignedIn(!token);
-    }, []);
+    useEffect(() => { 
+        if(authState.isAuthenticated) { 
+            setPicture(authState.user?.picture!);
+        }
+    }, [authState.isAuthenticated])
 
     const handleLogOut = () => { 
         localStorage.removeItem('authToken'); 

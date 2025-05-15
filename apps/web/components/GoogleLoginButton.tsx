@@ -13,6 +13,7 @@ interface GoogleCredentialResponse {
 export default function GoogleLoginButton() { 
     const [error, setError] = useState<string | null>(null);
     const { setAuthState } = useAuth();
+    const router = useRouter();
 
     const handleSuccess = async (credentialResponse: GoogleCredentialResponse) => { 
         try { 
@@ -41,8 +42,6 @@ export default function GoogleLoginButton() {
                 user: data.user, 
                 token: data.token
             });
-
-            window.location.href = '/';
         } catch (error) { 
             setError('Authentication failed. Please try again.');
             console.error('Authentication error:', error);
